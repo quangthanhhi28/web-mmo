@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng Ký - Premium Hub</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="auth-page">
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container navbar-content">
+      <div class="navbar-brand">
+        <a href="index.html" class="logo">
+          <i class="fas fa-gems"></i>
+          <span>PREMIUM HUB</span>
+        </a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Auth Container -->
+  <div class="auth-container">
+    <!-- Left Side - Info -->
+    <div class="auth-info">
+      <div class="auth-logo">
+        <i class="fas fa-user-plus"></i>
+      </div>
+      <h2>Tham Gia Cộng Đồng</h2>
+      <p>Đăng ký để bắt đầu mua tài nguyên Premium</p>
+      <div class="auth-features">
+        <div class="auth-feature">
+          <i class="fas fa-check"></i>
+          <span>Đăng ký miễn phí</span>
+        </div>
+        <div class="auth-feature">
+          <i class="fas fa-check"></i>
+          <span>Nhận voucher khuyến mãi</span>
+        </div>
+        <div class="auth-feature">
+          <i class="fas fa-check"></i>
+          <span>Hạng thành viên tự động</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side - Form -->
+    <div class="auth-form-wrapper">
+      <form class="auth-form" id="registerForm">
+        <h3>Đăng Ký Tài Khoản</h3>
+
+        <!-- Full Name -->
+        <div class="form-group">
+          <label for="fullName">Họ Và Tên</label>
+          <input type="text" id="fullName" name="fullName" placeholder="Nhập tên của bạn" required>
+          <small class="error-text" id="fullNameError"></small>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Nhập email" required>
+          <small class="error-text" id="emailError"></small>
+        </div>
+
+        <!-- Username -->
+        <div class="form-group">
+          <label for="username">Tên Đăng Nhập</label>
+          <input type="text" id="username" name="username" placeholder="Chọn tên đăng nhập" required>
+          <small class="error-text" id="usernameError"></small>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label for="password">Mật Khẩu</label>
+          <div class="password-input-wrapper">
+            <input type="password" id="password" name="password" placeholder="Tối thiểu 6 ký tự" required>
+            <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('password')"></i>
+          </div>
+          <small class="error-text" id="passwordError"></small>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group">
+          <label for="confirmPassword">Nhập Lại Mật Khẩu</label>
+          <div class="password-input-wrapper">
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Nhập lại mật khẩu" required>
+            <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('confirmPassword')"></i>
+          </div>
+          <small class="error-text" id="confirmPasswordError"></small>
+        </div>
+
+        <!-- Terms -->
+        <label class="checkbox">
+          <input type="checkbox" name="terms" required>
+          <span>Tôi đồng ý với <a href="#">Điều Khoản Sử Dụng</a></span>
+        </label>
+
+        <!-- Submit -->
+        <button type="submit" class="btn btn-primary btn-block btn-lg">
+          <i class="fas fa-user-check"></i>
+          Đăng Ký
+        </button>
+
+        <!-- Divider -->
+        <div class="form-divider">hoặc</div>
+
+        <!-- Redirect to Login -->
+        <p class="auth-redirect">
+          Đã có tài khoản?
+          <a href="login.html">Đăng nhập ngay</a>
+        </p>
+      </form>
+
+      <!-- Security Info -->
+      <div class="security-info">
+        <i class="fas fa-shield-alt"></i>
+        <p>Dữ liệu bạn được bảo vệ bởi mã hóa SSL 256-bit</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

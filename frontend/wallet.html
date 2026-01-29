@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nạp Tiền - Premium Hub</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container navbar-content">
+      <div class="navbar-brand">
+        <a href="index.html" class="logo">
+          <i class="fas fa-gems"></i>
+          <span>PREMIUM HUB</span>
+        </a>
+      </div>
+
+      <div class="navbar-menu" id="navbarMenu">
+        <a href="index.html" class="nav-link">Trang Chủ</a>
+        <a href="shop.html" class="nav-link">Shop</a>
+      </div>
+
+      <div class="navbar-auth" id="navbarAuth">
+        <span class="user-info">
+          <i class="fas fa-user-circle"></i>
+          <span id="userName"></span>
+        </span>
+        <a href="#" class="btn btn-outline btn-sm" id="logoutBtn">Đăng Xuất</a>
+      </div>
+
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Nạp Tiền Vào Ví</h1>
+      <p>Số Dư Hiện Tại: <span id="currentBalance">0 VND</span></p>
+    </div>
+  </section>
+
+  <!-- Wallet Section -->
+  <section class="wallet-section">
+    <div class="container">
+      <div class="wallet-content">
+        <!-- Left: Form Nạp Tiền -->
+        <div class="wallet-form-side">
+          <h3>Chọn Số Tiền & Ngân Hàng</h3>
+
+          <form class="wallet-form" id="depositForm">
+            <!-- Amount Selection -->
+            <div class="form-group">
+              <label>Số Tiền Nạp (VND)</label>
+              <div class="amount-presets">
+                <button type="button" class="preset-btn" data-amount="50000">50.000</button>
+                <button type="button" class="preset-btn" data-amount="100000">100.000</button>
+                <button type="button" class="preset-btn" data-amount="200000">200.000</button>
+                <button type="button" class="preset-btn" data-amount="500000">500.000</button>
+              </div>
+              <input type="number" id="customAmount" name="amount" placeholder="Hoặc nhập số tiền khác" min="10000" step="1000">
+              <small class="error-text" id="amountError"></small>
+            </div>
+
+            <!-- Bank Selection -->
+            <div class="form-group">
+              <label for="bankSelect">Chọn Ngân Hàng</label>
+              <select id="bankSelect" name="bankName" required>
+                <option value="">-- Chọn Ngân Hàng --</option>
+                <option value="vietcombank">🏦 Vietcombank</option>
+                <option value="mbbank">🏦 MB Bank</option>
+                <option value="techcombank">🏦 Techcombank</option>
+                <option value="bidv">🏦 BIDV</option>
+              </select>
+              <small class="error-text" id="bankError"></small>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-primary btn-block btn-lg">
+              <i class="fas fa-arrow-down"></i>
+              Tiếp Tục Nạp Tiền
+            </button>
+          </form>
+
+          <!-- Info -->
+          <div class="wallet-info">
+            <h4><i class="fas fa-info-circle"></i> Lưu Ý</h4>
+            <ul>
+              <li>Số tiền tối thiểu: 10.000 VND</li>
+              <li>Không có phí chuyển khoản</li>
+              <li>Tiền sẽ được cộng sau khi admin duyệt (30 phút - 2 giờ)</li>
+              <li>Lưu mã giao dịch để theo dõi</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right: Bank Info & QR -->
+        <div class="wallet-bank-side">
+          <div class="bank-card" id="bankCard">
+            <h3>Thông Tin Chuyển Khoản</h3>
+
+            <div class="bank-info-group">
+              <div class="bank-info-item">
+                <label>Ngân Hàng</label>
+                <p id="bankName">Chưa chọn</p>
+              </div>
+
+              <div class="bank-info-item">
+                <label>Số Tài Khoản</label>
+                <p id="accountNumber">1234567890</p>
+                <button class="copy-btn" onclick="copyToClipboard('accountNumber')">
+                  <i class="fas fa-copy"></i> Sao Chép
+                </button>
+              </div>
+
+              <div class="bank-info-item">
+                <label>Chủ Tài Khoản</label>
+                <p id="accountOwner">NGUYEN VAN A</p>
+              </div>
+
+              <div class="bank-info-item">
+                <label>Nội Dung Chuyển Khoản</label>
+                <p id="transferContent">NP123456789</p>
+                <button class="copy-btn" onclick="copyToClipboard('transferContent')">
+                  <i class="fas fa-copy"></i> Sao Chép
+                </button>
+              </div>
+
+              <div class="bank-info-item">
+                <label>Số Tiền</label>
+                <p id="transferAmount">0 VND</p>
+              </div>
+            </div>
+
+            <!-- QR Code -->
+            <div class="qr-section">
+              <h4>Mã QR</h4>
+              <div class="qr-code" id="qrCode">
+                <i class="fas fa-qrcode" style="font-size: 100px; color: #999;"></i>
+              </div>
+              <p class="qr-text">Quét mã QR bằng ứng dụng ngân hàng của bạn</p>
+            </div>
+
+            <!-- Deposit History -->
+            <div class="deposit-history">
+              <h4>Lịch Sử Giao Dịch Gần Đây</h4>
+              <div id="recentDeposits" class="deposits-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Về Chúng Tôi</h4>
+          <p>Premium Hub là nền tảng bán tài nguyên Premium uy tín hàng đầu tại Việt Nam.</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Liên Kết</h4>
+          <ul>
+            <li><a href="#">Chính Sách Bảo Mật</a></li>
+            <li><a href="#">Điều Khoản Sử Dụng</a></li>
+            <li><a href="#">Hỗ Trợ Khách Hàng</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Liên Hệ</h4>
+          <p>Email: support@premiumhub.vn</p>
+          <p>Zalo: 0941234567</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Theo Dõi</h4>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-zalo"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Premium Hub. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/wallet.js"></script>
+</body>
+</html>

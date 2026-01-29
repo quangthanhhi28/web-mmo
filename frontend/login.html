@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng Nhập - Premium Hub</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="auth-page">
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container navbar-content">
+      <div class="navbar-brand">
+        <a href="index.html" class="logo">
+          <i class="fas fa-gems"></i>
+          <span>PREMIUM HUB</span>
+        </a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Auth Container -->
+  <div class="auth-container">
+    <!-- Left Side - Info -->
+    <div class="auth-info">
+      <div class="auth-logo">
+        <i class="fas fa-lock"></i>
+      </div>
+      <h2>Chào Mừng Trở Lại</h2>
+      <p>Đăng nhập để truy cập tài khoản và mua hàng</p>
+      <div class="auth-features">
+        <div class="auth-feature">
+          <i class="fas fa-check"></i>
+          <span>Bảo mật tối đa</span>
+        </div>
+        <div class="auth-feature">
+          <i class="fas fa-check"></i>
+          <span>Thanh toán an toàn</span>
+        </div>
+        <div class="auth-feature">
+          <i class="fas fa-check"></i>
+          <span>Hỗ trợ 24/7</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side - Form -->
+    <div class="auth-form-wrapper">
+      <form class="auth-form" id="loginForm">
+        <h3>Đăng Nhập</h3>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Nhập email" required>
+          <small class="error-text" id="emailError"></small>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label for="password">Mật Khẩu</label>
+          <div class="password-input-wrapper">
+            <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required>
+            <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('password')"></i>
+          </div>
+          <small class="error-text" id="passwordError"></small>
+        </div>
+
+        <!-- Remember & Forgot -->
+        <div class="form-row">
+          <label class="checkbox">
+            <input type="checkbox" name="remember">
+            <span>Ghi nhớ tôi</span>
+          </label>
+          <a href="#" class="forgot-password">Quên mật khẩu?</a>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn btn-primary btn-block btn-lg">
+          <i class="fas fa-sign-in-alt"></i>
+          Đăng Nhập
+        </button>
+
+        <!-- Divider -->
+        <div class="form-divider">hoặc</div>
+
+        <!-- Redirect to Register -->
+        <p class="auth-redirect">
+          Chưa có tài khoản?
+          <a href="register.html">Đăng ký ngay</a>
+        </p>
+      </form>
+
+      <!-- Security Info -->
+      <div class="security-info">
+        <i class="fas fa-shield-alt"></i>
+        <p>Tôi cam kết bảo vệ thông tin của bạn bằng mã hóa SSL</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
