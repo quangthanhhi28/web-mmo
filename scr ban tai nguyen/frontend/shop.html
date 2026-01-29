@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop - Mua Tài Nguyên Premium</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container navbar-content">
+      <div class="navbar-brand">
+        <a href="index.html" class="logo">
+          <i class="fas fa-gems"></i>
+          <span>PREMIUM HUB</span>
+        </a>
+      </div>
+
+      <div class="navbar-menu" id="navbarMenu">
+        <a href="index.html" class="nav-link">Trang Chủ</a>
+        <a href="shop.html" class="nav-link active">Shop</a>
+        <a href="index.html#features" class="nav-link">Tính Năng</a>
+        <a href="index.html#faq" class="nav-link">Hỗ Trợ</a>
+      </div>
+
+      <div class="navbar-auth" id="navbarAuth">
+        <a href="login.html" class="btn btn-outline">Đăng Nhập</a>
+        <a href="register.html" class="btn btn-primary">Đăng Ký</a>
+      </div>
+
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Cửa Hàng</h1>
+      <p>Chọn sản phẩm Premium phù hợp với bạn</p>
+    </div>
+  </section>
+
+  <!-- Shop Section -->
+  <section class="shop-section">
+    <div class="container">
+      <div class="shop-content">
+        <!-- Sidebar Filters -->
+        <aside class="shop-sidebar">
+          <h3>Bộ Lọc</h3>
+
+          <!-- Category Filter -->
+          <div class="filter-group">
+            <h4>Loại Dịch Vụ</h4>
+            <label class="filter-checkbox">
+              <input type="checkbox" value="netflix_pre" data-filter="category">
+              <span><i class="fab fa-netflix"></i> Netflix</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" value="spotify_pre" data-filter="category">
+              <span><i class="fab fa-spotify"></i> Spotify</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" value="youtube_pre" data-filter="category">
+              <span><i class="fab fa-youtube"></i> YouTube</span>
+            </label>
+          </div>
+
+          <!-- Duration Filter -->
+          <div class="filter-group">
+            <h4>Thời Hạn</h4>
+            <label class="filter-checkbox">
+              <input type="checkbox" value="1" data-filter="duration">
+              <span>1 Tháng</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" value="3" data-filter="duration">
+              <span>3 Tháng</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" value="6" data-filter="duration">
+              <span>6 Tháng</span>
+            </label>
+          </div>
+
+          <!-- Price Filter -->
+          <div class="filter-group">
+            <h4>Giá Tiền</h4>
+            <input type="range" min="0" max="500000" id="priceRange" class="price-slider">
+            <p>Giá: <span id="priceDisplay">0</span> - 500,000 VND</p>
+          </div>
+
+          <button class="btn btn-primary btn-block" id="resetFilters">
+            <i class="fas fa-redo"></i> Xóa Bộ Lọc
+          </button>
+        </aside>
+
+        <!-- Products Grid -->
+        <main class="shop-main">
+          <!-- Sort Bar -->
+          <div class="sort-bar">
+            <label for="sortSelect">Sắp xếp:</label>
+            <select id="sortSelect" class="sort-select">
+              <option value="created_at-desc">Mới Nhất</option>
+              <option value="price-asc">Giá Thấp Đến Cao</option>
+              <option value="price-desc">Giá Cao Đến Thấp</option>
+              <option value="name-asc">Tên A-Z</option>
+            </select>
+          </div>
+
+          <!-- Products Grid -->
+          <div class="products-grid" id="productsGrid">
+            <!-- Skeleton Loading -->
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+          </div>
+
+          <!-- Pagination -->
+          <div class="pagination" id="pagination">
+            <!-- Sẽ được tạo bằng JS -->
+          </div>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Về Chúng Tôi</h4>
+          <p>Premium Hub là nền tảng bán tài nguyên Premium uy tín hàng đầu tại Việt Nam.</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Liên Kết</h4>
+          <ul>
+            <li><a href="#">Chính Sách Bảo Mật</a></li>
+            <li><a href="#">Điều Khoản Sử Dụng</a></li>
+            <li><a href="#">Hỗ Trợ Khách Hàng</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Liên Hệ</h4>
+          <p>Email: support@premiumhub.vn</p>
+          <p>Zalo: 0941234567</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Theo Dõi</h4>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-zalo"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Premium Hub. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/shop.js"></script>
+</body>
+</html>

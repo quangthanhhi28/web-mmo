@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hồ Sơ Cá Nhân - Premium Hub</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container navbar-content">
+      <div class="navbar-brand">
+        <a href="index.html" class="logo">
+          <i class="fas fa-gems"></i>
+          <span>PREMIUM HUB</span>
+        </a>
+      </div>
+
+      <div class="navbar-menu" id="navbarMenu">
+        <a href="index.html" class="nav-link">Trang Chủ</a>
+        <a href="shop.html" class="nav-link">Shop</a>
+      </div>
+
+      <div class="navbar-auth" id="navbarAuth">
+        <span class="user-info" id="userInfo">
+          <i class="fas fa-user-circle"></i>
+          <span id="userName"></span>
+        </span>
+        <a href="#" class="btn btn-outline btn-sm" id="logoutBtn">Đăng Xuất</a>
+      </div>
+
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Hồ Sơ Cá Nhân</h1>
+    </div>
+  </section>
+
+  <!-- Profile Container -->
+  <section class="profile-section">
+    <div class="container">
+      <div class="profile-content">
+        <!-- Sidebar Menu -->
+        <aside class="profile-sidebar">
+          <div class="profile-avatar">
+            <i class="fas fa-user-circle"></i>
+          </div>
+          <h3 id="profileUsername">Username</h3>
+          <p id="profileTier" class="tier-badge">Thành Viên Thường</p>
+
+          <nav class="profile-menu">
+            <a href="#overview" class="menu-item active" data-tab="overview">
+              <i class="fas fa-home"></i>
+              Tổng Quan
+            </a>
+            <a href="#info" class="menu-item" data-tab="info">
+              <i class="fas fa-user"></i>
+              Thông Tin
+            </a>
+            <a href="#wallet" class="menu-item" data-tab="wallet">
+              <i class="fas fa-wallet"></i>
+              Ví Tiền
+            </a>
+            <a href="#orders" class="menu-item" data-tab="orders">
+              <i class="fas fa-shopping-bag"></i>
+              Lịch Sử Mua
+            </a>
+            <a href="#deposits" class="menu-item" data-tab="deposits">
+              <i class="fas fa-history"></i>
+              Lịch Sử Nạp
+            </a>
+            <a href="#security" class="menu-item" data-tab="security">
+              <i class="fas fa-lock"></i>
+              Bảo Mật
+            </a>
+          </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="profile-main">
+          <!-- Overview Tab -->
+          <div class="tab-content active" id="overview">
+            <div class="dashboard-cards">
+              <!-- Wallet Card -->
+              <div class="dashboard-card">
+                <div class="card-header">
+                  <h4>Số Dư Ví</h4>
+                  <i class="fas fa-wallet"></i>
+                </div>
+                <p class="card-number" id="walletBalance">0 VND</p>
+                <a href="#wallet" class="card-link" onclick="switchTab('wallet')">Xem chi tiết</a>
+              </div>
+
+              <!-- Total Spent Card -->
+              <div class="dashboard-card">
+                <div class="card-header">
+                  <h4>Tổng Đã Chi</h4>
+                  <i class="fas fa-money-bill"></i>
+                </div>
+                <p class="card-number" id="totalSpent">0 VND</p>
+              </div>
+
+              <!-- Points Card -->
+              <div class="dashboard-card">
+                <div class="card-header">
+                  <h4>Điểm Tích Lũy</h4>
+                  <i class="fas fa-star"></i>
+                </div>
+                <p class="card-number" id="loyaltyPoints">0 điểm</p>
+              </div>
+
+              <!-- Tier Card -->
+              <div class="dashboard-card">
+                <div class="card-header">
+                  <h4>Hạng Thành Viên</h4>
+                  <i class="fas fa-crown"></i>
+                </div>
+                <p class="card-number" id="memberTier">Thường</p>
+              </div>
+            </div>
+
+            <!-- Recent Orders -->
+            <div class="recent-section">
+              <h3>Đơn Hàng Gần Đây</h3>
+              <div id="recentOrders" class="orders-list"></div>
+            </div>
+          </div>
+
+          <!-- Info Tab -->
+          <div class="tab-content" id="info">
+            <h3>Thông Tin Cá Nhân</h3>
+            <form class="profile-form" id="profileForm">
+              <div class="form-group">
+                <label for="infoEmail">Email</label>
+                <input type="email" id="infoEmail" readonly>
+              </div>
+
+              <div class="form-group">
+                <label for="infoUsername">Tên Đăng Nhập</label>
+                <input type="text" id="infoUsername" readonly>
+              </div>
+
+              <div class="form-group">
+                <label for="infoFullName">Họ và Tên</label>
+                <input type="text" id="infoFullName">
+              </div>
+
+              <div class="form-group">
+                <label for="infoPhone">Số Điện Thoại</label>
+                <input type="tel" id="infoPhone">
+              </div>
+
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-save"></i>
+                Cập Nhật Thông Tin
+              </button>
+            </form>
+          </div>
+
+          <!-- Wallet Tab -->
+          <div class="tab-content" id="wallet">
+            <h3>Quản Lý Ví</h3>
+            <a href="wallet.html" class="btn btn-primary">
+              <i class="fas fa-money-bill"></i>
+              Nạp Tiền
+            </a>
+          </div>
+
+          <!-- Orders Tab -->
+          <div class="tab-content" id="orders">
+            <h3>Lịch Sử Mua Hàng</h3>
+            <div id="ordersList" class="orders-table"></div>
+          </div>
+
+          <!-- Deposits Tab -->
+          <div class="tab-content" id="deposits">
+            <h3>Lịch Sử Nạp Tiền</h3>
+            <div id="depositsList" class="deposits-table"></div>
+          </div>
+
+          <!-- Security Tab -->
+          <div class="tab-content" id="security">
+            <h3>Cài Đặt Bảo Mật</h3>
+            
+            <!-- Change Password -->
+            <div class="security-section">
+              <h4>Thay Đổi Mật Khẩu</h4>
+              <form class="security-form" id="changePasswordForm">
+                <div class="form-group">
+                  <label for="oldPassword">Mật Khẩu Cũ</label>
+                  <input type="password" id="oldPassword" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="newPassword">Mật Khẩu Mới</label>
+                  <input type="password" id="newPassword" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="confirmNewPassword">Xác Nhận Mật Khẩu Mới</label>
+                  <input type="password" id="confirmNewPassword" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Cập Nhật Mật Khẩu</button>
+              </form>
+            </div>
+
+            <!-- 2FA -->
+            <div class="security-section">
+              <h4>Xác Thực Hai Lớp (2FA)</h4>
+              <p id="twoFAStatus">Chưa bật</p>
+              <button class="btn btn-primary" id="enable2FABtn">Bật 2FA</button>
+            </div>
+
+            <!-- Login History -->
+            <div class="security-section">
+              <h4>Lịch Sử Đăng Nhập</h4>
+              <div id="loginHistoryList" class="login-history"></div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Về Chúng Tôi</h4>
+          <p>Premium Hub là nền tảng bán tài nguyên Premium uy tín hàng đầu tại Việt Nam.</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Liên Kết</h4>
+          <ul>
+            <li><a href="#">Chính Sách Bảo Mật</a></li>
+            <li><a href="#">Điều Khoản Sử Dụng</a></li>
+            <li><a href="#">Hỗ Trợ Khách Hàng</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Liên Hệ</h4>
+          <p>Email: support@premiumhub.vn</p>
+          <p>Zalo: 0941234567</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Theo Dõi</h4>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-zalo"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Premium Hub. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>
